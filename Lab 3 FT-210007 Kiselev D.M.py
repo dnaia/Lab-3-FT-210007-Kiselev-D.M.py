@@ -1,11 +1,33 @@
 language = input('Выберите язык для шифровки:\nrus - русский\neng - английский\n')
-sdvig = int(input('Введите число, на которое сдвинется символ '))
-direction = int(input(
-    'Вы хотите дешифровать или шифровать код?\n1 - Дешифровать\n2 - Шифровать\nВведите цифру!\n'))
+a = ['eng', 'rus']
+s = 0
+while language not in a:
+    print('Вы ввели неверное значение!\n')
+    language = input('Выберите язык для шифровки:\nrus - русский\neng - английский\n')
+
+k = 0
+while k != 1:
+    try:
+        sdvig = int(input('Введите число, на которое сдвинется символ '))
+    except ValueError:
+        print('Вы ввели не число!\nПробуйте снова\n')
+    else:
+        k += 1
+        sdvig = sdvig
+d = 0
+while d != 1:
+    try:
+        direction = int(
+            input('Вы хотите дешифровать или шифровать код?\n1 - Дешифровать\n2 - Шифровать\nВведите цифру!\n'))
+    except ValueError:
+        print('Вы ввели не число!\nПробуйте снова\n')
+    else:
+        d += 1
+        direction = direction
 ciphercaesar = input('Введите шифр Цезаря на выбранном языке ')
-ciphercaesar = ciphercaesar.upper()
 alphabeteng = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
 alphabetrus = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+ciphercaesar = ciphercaesar.upper()
 script = ''
 if language == 'eng':
     for line in ciphercaesar:
@@ -23,7 +45,10 @@ if language == 'eng':
                 script = script + alphabeteng[num2]
             else:
                 script = script + line
-    print('Ваш шифр:', script)
+    if script == ciphercaesar:
+        print('Вы ввели что то неверно!\nВводите шифр Цезаря на английском языке')
+    else:
+        print('Ваш шифр:', script)
 elif language == 'rus':
     for line in ciphercaesar:
         if direction == 2:
@@ -40,4 +65,8 @@ elif language == 'rus':
                 script = script + alphabetrus[num2]
             else:
                 script = script + line
-    print('Ваш шифр:', script)
+    if script == ciphercaesar:
+        print('Вы ввели что то неверно!\nВводите шифр Цезаря на русском языке')
+    else:
+        print('Ваш шифр:', script)
+
