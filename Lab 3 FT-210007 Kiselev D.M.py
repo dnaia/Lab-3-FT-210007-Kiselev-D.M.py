@@ -1,12 +1,12 @@
 language = input('Выберите язык для шифровки:\nrus - русский\neng - английский\n')
-a = ['eng', 'rus']
+a = ['eng', 'rus'] #Список языков
 s = 0
-while language not in a:
+while language not in a: #Проверка, какой яззык ввели | Диалоговый режим с пользователем и обработкой ошибок ввода
     print('Вы ввели неверное значение!\n')
     language = input('Выберите язык для шифровки:\nrus - русский\neng - английский\n')
 
 k = 0
-while k != 1:
+while k != 1: #Проверка, чтобы ввели число, на которе сдвинется символ | Диалоговый режим с пользователем и обработкой ошибок ввода
     try:
         sdvig = int(input('Введите число, на которое сдвинется символ '))
     except ValueError:
@@ -15,7 +15,7 @@ while k != 1:
         k += 1
         sdvig = sdvig
 d = 0
-while d != 1:
+while d != 1: #Проверка, чтобы ввели число Шифровка/Дешифровка | Диалоговый режим с пользователем и обработкой ошибок ввода
     try:
         direction = int(
             input('Вы хотите дешифровать или шифровать код?\n1 - Дешифровать\n2 - Шифровать\nВведите цифру!\n'))
@@ -29,7 +29,7 @@ alphabeteng = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'
 alphabetrus = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
 ciphercaesar = ciphercaesar.upper()
 script = ''
-if language == 'eng':
+if language == 'eng': #Шифровка англ языка
     for line in ciphercaesar:
         if direction == 2:
             num = alphabeteng.find(line)
@@ -45,11 +45,11 @@ if language == 'eng':
                 script = script + alphabeteng[num2]
             else:
                 script = script + line
-    if script == ciphercaesar:
+    if script == ciphercaesar: #Проверка, если ввели шифр не на том языке | Диалоговый режим с пользователем и обработкой ошибок ввода
         print('Вы ввели что то неверно!\nВводите шифр Цезаря на английском языке')
     else:
         print('Ваш шифр:', script)
-elif language == 'rus':
+elif language == 'rus': #Шифровка рус языка
     for line in ciphercaesar:
         if direction == 2:
             num = alphabetrus.find(line)
@@ -65,7 +65,7 @@ elif language == 'rus':
                 script = script + alphabetrus[num2]
             else:
                 script = script + line
-    if script == ciphercaesar:
+    if script == ciphercaesar: #Проверка, если ввели шифр не на том языке | Диалоговый режим с пользователем и обработкой ошибок ввода
         print('Вы ввели что то неверно!\nВводите шифр Цезаря на русском языке')
     else:
         print('Ваш шифр:', script)
